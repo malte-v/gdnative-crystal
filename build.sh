@@ -1,4 +1,5 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
-crystal build src/simple.cr -o bin/simple --cross-compile
-cc 'bin/simple.o' -o 'bin/libsimple.so' -shared -rdynamic -lpcre -lgc -lpthread /usr/lib/crystal/ext/libcrystal.a -levent -lrt -ldl -L/usr/lib -L/usr/local/lib
+crystal_linker_cmd=$(crystal build src/simple.cr -o bin/simple --cross-compile --debug -Dgc_none) &&
+linker_cmd="$crystal_linker_cmd --shared -o bin/libsimple.so" &&
+eval $linker_cmd

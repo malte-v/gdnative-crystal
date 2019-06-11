@@ -1,3 +1,4 @@
+# require "immix"
 require "./gdnative"
 
 lib LibC
@@ -13,7 +14,11 @@ module APIs
 end
 
 fun gdcr_gdnative_init(options : Gd::GDNativeInitOptions*)
-  puts "start gdnative init"
+  LibC.printf("start gdnative init\n")
+  # GC.init
+  # LibC.printf("initialized gc\n")
+  # LibCrystalMain.__crystal_main(1, ["GDCRLibrary".to_unsafe])
+
   APIs.core = options.value.api_struct.value
 
   APIs.core.num_extensions.times do |i|

@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  immix:
+    github: ysbaddaden/gc
+    commit: e225ac51a639701d7391451247f20acb84c3abdb
+
